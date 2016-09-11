@@ -1,5 +1,5 @@
 
-intro_data = [
+relations_data = [
   {
     "from": "BMW",
     "n": 1,
@@ -43,7 +43,7 @@ company_data = [
     "img":"assets/images/icons/bmw.png"
   },
     {
-    "company":"Drive",
+    "company":"DriveNow",
     "company_type":"Supplier",
     "technology_type":"AD",
     "img":"assets/images/icons/gm.png"
@@ -68,44 +68,69 @@ company_data = [
   }
 ]
 
-
-
-//console.log(intro_data);
+var relations_data = JSON.parse(relations);
+var company_data = JSON.parse(companies);
 
 // ------------------------------------------------------------------------------------
 // format data (this is the hard part)
 
 // names
-from = _.pluck(intro_data, "from");
-to   = _.pluck(intro_data, "to");
+from = _.pluck(relations_data, "from");
+to   = _.pluck(relations_data, "to");
+
+external = _.pluck(company_data,"company");
 names_index = _.union(from, to); // joins *unique* names (creates look up table)
+//names_index = _.union(names_index, external);
+//names_index = _.pluck(company_data,"company")
+
+console.log(from)
+console.log(to)
+console.log(external)
+//names_index = _.chain(companies).pluck("company").flatten().uniq().value() 
+
+// nodes = names_index.map(function(d,i){ 
+//     return { "name":d, "group":1 }; 
+// });
 
 console.log(names_index)
-// nodes
-//nodes = names_index.map(function(d,i){ 
-//    return { "name":d, "group":1 }; 
-//});
+
+
 var company_type2group = {};
 company_type2group["Startup"] = 1;
 company_type2group["OEM"] = 3;
 company_type2group["Supplier"] = 2;
 
-
-nodes = company_data.map(function(d,i){ 
-    return { "name":d["company"], "img":d["img"],"group":company_type2group[d["company_type"]] }; 
+//nodes = company_data.map(function(d,i){ 
+nodes = names_index.map(function(d,i){ 
+    return { "name":d, "group":1 }; 
 });
 
+ nodes2 = company_data.map(function(d,i){ 
+     return { "name":d["company"], "img":d["img"],"group":company_type2group[d["company_type"]] }; 
+ });
 
-console.log(nodes.length)
+nodes = _.union(nodes,nodes2)
+
+console.log("Num of nodes",nodes.length)
 // links
-links = intro_data.map(function(d,i){ 
+links = relations_data.map(function(d,i){ 
     return { 
+
         "source": _.indexOf(names_index, d["from"]),
         "target": _.indexOf(names_index, d["to"]), 
-        //"value": d["n"],
-        "type": _.pluck(d["data"], "type")
+        "type": _.pluck(d["data"], "type"),
+        "info": _.pluck(d["data"], "info")
     };
 });
+
+
+console.log("Num of links",links.length)
+for (var key in links) {
+    if (links.hasOwnProperty(key)) {
+        console.log(key, links[key]);
+    }
+}
+
 
 // make final graph
 graph = { "nodes": nodes, "links": links };
@@ -117,8 +142,8 @@ graph = { "nodes": nodes, "links": links };
 // tags
 //collapses data into array of tags
 //_.pluck(_.flatten(_.pluck(intro_data, "data")), "tag") // without method-chaining
-tags_index = _.chain(intro_data).pluck("data").flatten().pluck("type").uniq().value() // with chaining, neater syntax 
-console.log(tags_index);
+tags_index = _.chain(relations_data).pluck("data").flatten().pluck("type").uniq().value() // with chaining, neater syntax 
+console.log("tags_index",tags_index);
 
 tag_colors = {};
 tags_index.map(function(d,i){
@@ -128,9 +153,11 @@ tags_index.map(function(d,i){
 }); 
 
 relationship2strength = {};
-relationship2strength["Partnership"]=1;
+relationship2strength["Partners"]=1;
 relationship2strength["Investment"]=4;
 relationship2strength["Acquisition"]=7;
+
+
 
 //relationship_strength = {};
 //tags_index.map(function(d,i){
@@ -187,6 +214,37 @@ var link = svg1.selectAll("g")
     //})
     ;
 
+
+var linkText = svg1.selectAll("g")
+            .data(force.links())
+          .append("text")
+      .attr("font-family", "Arial, Helvetica, sans-serif")
+      .attr("x", function(d) {
+          if (d.target.x > d.source.x) { return (d.source.x + (d.target.x - d.source.x)/2); }
+          else { return (d.target.x + (d.source.x - d.target.x)/2); }
+      })
+            .attr("y", function(d) {
+          if (d.target.y > d.source.y) { return (d.source.y + (d.target.y - d.source.y)/2); }
+          else { return (d.target.y + (d.source.y - d.target.y)/2); }
+      })
+      .attr("fill", "Black")
+            .style("font", "normal 40px Arial")
+            .attr("dy", ".35em")
+            .text(function(d) { console.log("test"); return "test"; });
+
+var linkText2 = svg1.selectAll("g")
+  .data(graph.links)
+    .enter()
+  .append("text")
+  .attr("font-family", "Arial, Helvetica, sans-serif")
+   .attr("fill", "Black")
+            .style("font", "normal 12px Arial")
+    .attr("class", "text")
+    .attr("dx", -6)
+    .attr("dy", 2)
+    .text(function(d) { return d.info})
+  .call(force.drag);
+
 // var node = svg1.selectAll("g")
 //   .data(graph.nodes)
 //     .enter()
@@ -196,31 +254,32 @@ var link = svg1.selectAll("g")
 //     .style("fill", function(d) { return color(d.group); })
 //   .call(force.drag);
 
-
-//  // Append images
-// node.append("svg:image")
-//         .attr("xlink:href",  function(d) { return d.img;})
-//         .attr("x", function(d) { return -25;})
-//         .attr("y", function(d) { return -25;})
-//         .attr("height", 50)
-//         .attr("width", 50)
-//         .call(force.drag);
-
 var image_size = 32
 
 var node = svg1.selectAll(".node")
     .data(graph.nodes)
-    .enter().append("image")
+    .enter()
+    //.append("circle")
+    //.attr("r", 25)
+    //.style("fill", function(d) { return color(d.group); })
+    .append("image")
     .attr("class", "node")
-    .attr("xlink:href", function(d) {return d.img;})
+    .attr("xlink:href", function(d) {return "assets/images/icons/"+d.name.toLowerCase()+".png";})
+    //.attr("xlink:href", function(d) {return "assets/images/icons/"+d.img;})
     .attr("x", -image_size)
     .attr("y", -image_size)
     .attr("width", image_size*2)
     .attr("height", image_size*2)
      .call(force.drag);
 
-
-
+// var node2 = svg1.selectAll(".node")
+//     .data(graph.nodes)
+//     .enter()
+//     .append("circle")
+//     .attr("class", "node")
+//     .attr("r", 40)
+//     .style("fill", function(d) { return color(d.group); })
+//     .call(force.drag);
 // node.append("image")
 //  .attr("xlink:href", "https://github.com/favicon.ico")
 //  .attr("x", -8)
@@ -253,11 +312,28 @@ force.on("tick", function() {
     //node.attr("cx", function(d) { return d.x; })
     //    .attr("cy", function(d) { return d.y; });
     
-    //node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+    //node2.attr("cx", function(d) { return d.x; })
+     //   .attr("cy", function(d) { return d.y; });
+
+    //node2.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
       node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
     // text.attr("x", function(d) { return d.x; })
      //   .attr("y", function(d) { return d.y; });
+
+     linkText2
+      .attr("x", function(d) {
+          if (d.target.x > d.source.x) { return (d.source.x + (d.target.x - d.source.x)/2); }
+          else { return (d.target.x + (d.source.x - d.target.x)/2); }
+      })
+      .attr("y", function(d) {
+          if (d.target.y > d.source.y) { return (d.source.y + (d.target.y - d.source.y)/2); }
+          else { return (d.target.y + (d.source.y - d.target.y)/2); }
+      });
+
+
+
 });
 
 //.attr("transform", "translate(-40,-40)");

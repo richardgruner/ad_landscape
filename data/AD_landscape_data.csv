@@ -1,0 +1,7 @@
+RID,Active_company,Passive_company,Relation_type,Date_since,Information_source
+1,BMW,Baidu,Acquisition,12/24/12,www.bild.de
+2,Bosch,Daimler_Mercedes,Partners,12/1/16,www.bild.de
+3,Apple,Bosch,Investment,1/1/10,www.bild.de
+4,Apple,Daimler_Mercedes,Partners,1/1/10,www.bild.de
+5,Daimler_Mercedes,Google,Partners,1/1/10,www.bild.de
+6,BMW,Baidu,Partners,1/1/16,www.google.de
