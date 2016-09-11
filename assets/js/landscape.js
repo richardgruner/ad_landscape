@@ -109,9 +109,26 @@ nodes = names_index.map(function(d,i){
      return { "name":d["company"], "img":d["img"],"group":company_type2group[d["company_type"]] }; 
  });
 
-nodes = _.union(nodes,nodes2)
 
-console.log("Num of nodes",nodes.length)
+new_nodes = [];
+var values = Object.keys(names_index).map(function(key){
+    return names_index[key];
+});
+
+ console.log("external nodes",nodes2,names_index,values);
+
+for (var i in nodes2) {
+    //console.log("name",nodes2[i]["name"]);
+    //console.log(names_index.indexOf(i.name))
+    if (!names_index.includes(nodes2[i]["name"])){
+        new_nodes.push(nodes2[i])
+    }
+}
+console.log("new nodes",new_nodes);
+
+nodes = _.union(nodes,new_nodes)
+
+//console.log("Num of nodes",nodes.length)
 // links
 links = relations_data.map(function(d,i){ 
     return { 
@@ -127,7 +144,7 @@ links = relations_data.map(function(d,i){
 console.log("Num of links",links.length)
 for (var key in links) {
     if (links.hasOwnProperty(key)) {
-        console.log(key, links[key]);
+        //console.log(key, links[key]);
     }
 }
 
@@ -178,8 +195,8 @@ svg1 = d3.select("#landscape").append("svg")
     .attr("height", height);
 
 var force = d3.layout.force()
-    .charge(-1000)
-    .linkDistance(160)
+    .charge(-400)
+    .linkDistance(170)
     .size([width, height])
     .nodes(graph.nodes)
     .links(graph.links)
@@ -235,13 +252,17 @@ var linkText = svg1.selectAll("g")
 var linkText2 = svg1.selectAll("g")
   .data(graph.links)
     .enter()
+    //.append("a")
+    //.attr("xlink:href", "http://www.google.com")
   .append("text")
+  
   .attr("font-family", "Arial, Helvetica, sans-serif")
    .attr("fill", "Black")
-            .style("font", "normal 12px Arial")
+            .style("font", "normal 9px Arial")
     .attr("class", "text")
-    .attr("dx", -6)
+    .attr("dx", -30)
     .attr("dy", 2)
+    //.text(function(d) { return "http://"+d.info})
     .text(function(d) { return d.info})
   .call(force.drag);
 
