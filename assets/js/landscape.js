@@ -102,11 +102,16 @@ company_type2group["Supplier"] = 2;
 
 //nodes = company_data.map(function(d,i){ 
 nodes = names_index.map(function(d,i){ 
-    return { "name":d, "group":1 }; 
+    return { "name":d, "group":1,
+    "info_content": d+" is a manufacturer of AD stuff" }; 
 });
 
  nodes2 = company_data.map(function(d,i){ 
-     return { "name":d["company"], "img":d["img"],"group":company_type2group[d["company_type"]] }; 
+     return { 
+        "name":d["company"], 
+        "img":d["img"],
+        "group":company_type2group[d["company_type"]],
+        "info_content": d["company"]+" is a manufacturer of AD stuff" }; 
  });
 
 
@@ -136,7 +141,8 @@ links = relations_data.map(function(d,i){
         "source": _.indexOf(names_index, d["from"]),
         "target": _.indexOf(names_index, d["to"]), 
         "type": _.pluck(d["data"], "type"),
-        "info": _.pluck(d["data"], "info")
+        "info": _.pluck(d["data"], "info"),
+        "ref": _.pluck(d["data"],"ref")
     };
 });
 
@@ -173,14 +179,6 @@ relationship2strength = {};
 relationship2strength["Partners"]=1;
 relationship2strength["Investment"]=4;
 relationship2strength["Acquisition"]=7;
-
-
-
-//relationship_strength = {};
-//tags_index.map(function(d,i){
-//    relationship_strength[d] = relationship2strength[i];
-//});
-
 
 // ------------------------------------------------------------------------------------
 // viz
@@ -231,6 +229,17 @@ var link = svg1.selectAll("g")
     //})
     ;
 
+var linkLinks = svg1.selectAll("g")
+  .data(force.links())
+  .append("svg:a")
+  .attr("xlink:href", function(d){ return "http://www.google.com"})
+  .attr("target", "_blank")
+  .append("text")
+  .attr("dy", 3.5)
+  .attr("dx", -5.5)
+  .attr("text-anchor", "start")
+  .text(function(d) { return d.info})
+  .call(force.drag);
 
 var linkText = svg1.selectAll("g")
             .data(force.links())
@@ -263,7 +272,7 @@ var linkText2 = svg1.selectAll("g")
     .attr("dx", -30)
     .attr("dy", 2)
     //.text(function(d) { return "http://"+d.info})
-    .text(function(d) { return d.info})
+    .html(function(d) { return "<a href='"+d["ref"]+"'>"+d.info+"</a>"})
   .call(force.drag);
 
 // var node = svg1.selectAll("g")
@@ -276,6 +285,54 @@ var linkText2 = svg1.selectAll("g")
 //   .call(force.drag);
 
 var image_size = 32
+
+
+//Toggle stores whether the highlighting is on
+var toggle = 0;
+//Create an array logging what is connected to what
+var linkedByIndex = {};
+for (i = 0; i < graph.nodes.length; i++) {
+    linkedByIndex[i + "," + i] = 1;
+};
+graph.links.forEach(function (d) {
+    linkedByIndex[d.source.index + "," + d.target.index] = 1;
+});
+
+//This function looks up whether a pair are neighbours
+function neighboring(a, b) {
+    return linkedByIndex[a.index + "," + b.index];
+}
+function connectedNodes() {
+    if (toggle == 0) {
+        //Reduce the opacity of all but the neighbouring nodes
+        d = d3.select(this).node().__data__;
+        node.style("opacity", function (o) {
+            return neighboring(d, o) | neighboring(o, d) ? 1 : 0.1;
+        });
+        link.style("opacity", function (o) {
+            return d.index==o.source.index | d.index==o.target.index ? 1 : 0.1;
+        });
+        //Reduce the op
+        toggle = 1;
+    } else {
+        //Put them back to opacity=1
+        node.style("opacity", 1);
+        link.style("opacity", 1);
+        toggle = 0;
+    }
+}
+
+
+
+var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-5, 0])
+    .html(function (d) {
+    return  "<div class='button'>  <button type='submit'>" + d["info_content"] +"</button> </div></form>" ;
+})
+svg1.call(tip);
+
+
 
 var node = svg1.selectAll(".node")
     .data(graph.nodes)
@@ -292,8 +349,10 @@ var node = svg1.selectAll(".node")
     .attr("y", -image_size)
     .attr("width", image_size*2)
     .attr("height", image_size*2)
-     .call(force.drag);
-
+     .call(force.drag)
+     .on('mouseover', tip.show) //Added
+ .on('mouseout', tip.hide) //Added 
+.on('dblclick', connectedNodes);
 // var node2 = svg1.selectAll(".node")
 //     .data(graph.nodes)
 //     .enter()
@@ -331,6 +390,13 @@ force.on("tick", function() {
         .attr("x2", function(d) { return d.target.x; })
         .attr("y2", function(d) { return d.target.y; });
     
+// link.attr("d", function(d) {
+//     var dx = d.target.x - d.source.x,
+//         dy = d.target.y - d.source.y,
+//         dr = 75/d.linknum;  //linknum is defined above
+//     return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
+//   });
+
     //node.attr("cx", function(d) { return d.x; })
     //    .attr("cy", function(d) { return d.y; });
     
@@ -353,6 +419,17 @@ force.on("tick", function() {
           if (d.target.y > d.source.y) { return (d.source.y + (d.target.y - d.source.y)/2); }
           else { return (d.target.y + (d.source.y - d.target.y)/2); }
       });
+
+      linkLinks
+      .attr("x", function(d) {
+          if (d.target.x > d.source.x) { return (d.source.x + (d.target.x - d.source.x)/2); }
+          else { return (d.target.x + (d.source.x - d.target.x)/2); }
+      })
+      .attr("y", function(d) {
+          if (d.target.y > d.source.y) { return (d.source.y + (d.target.y - d.source.y)/2); }
+          else { return (d.target.y + (d.source.y - d.target.y)/2); }
+      });
+
 
 
 

@@ -1,3 +1,6 @@
+
+
+
 .chart rect {
   fill: steelblue;
 }
@@ -22,6 +25,12 @@ svg1 {
   stroke: #fff;
   stroke-width: 1.5px;
 }
+
+d3-tip {
+    line-height: 1;
+    color: black;
+}
+
 circle.node.reflexive {
   stroke: #000 !important;
   stroke-width: 5.0px;
@@ -36,7 +45,7 @@ circle.node.reflexive {
 .text {
   font-family: sans-serif;
   font-size: 5px;
-  fill: #9F1717;
+  fill: #aaa;
 }
 
 .node {
