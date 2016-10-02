@@ -176,9 +176,14 @@ tags_index.map(function(d,i){
 }); 
 
 relationship2strength = {};
-relationship2strength["Partners"]=1;
-relationship2strength["Investment"]=4;
-relationship2strength["Acquisition"]=7;
+relationship2strength["Partners"]=6;
+relationship2strength["Investment"]=6;
+relationship2strength["Acquisition"]=6;
+
+relationship2color = {};
+relationship2color["Partners"]='green';
+relationship2color["Investment"]='orange';
+relationship2color["Acquisition"]='red';
 
 // ------------------------------------------------------------------------------------
 // viz
@@ -221,16 +226,12 @@ var link = svg1.selectAll("g")
     .enter()
   .append("line")
     .attr("class", "link")
-    .style("stroke", function(d,i) { return tag_colors[ d["type"][0] ]; })
-    //.style("stroke-width", function(d) { return 1.5; })
+    .style("stroke", function(d,i) { return relationship2color[d["type"]];}) //tag_colors[ d["type"][0] ]; })
     .style("stroke-width", function(d) { return relationship2strength[d["type"]]; })
     //.attr("marker-end", function(d,i) { 
       //  return "url(#arrow-" + d["type"][0] + ")"; 
     //})
     ;
-
-//link.on("mouseover", function() { d3.select(this).style("stroke","red"); });
-    
 
 
 var linkLinks = svg1.selectAll("g")
@@ -245,72 +246,201 @@ var linkLinks = svg1.selectAll("g")
   .text(function(d) { return d.info})
   .call(force.drag);
 
-var linkText = svg1.selectAll("g")
-            .data(force.links())
-          .append("text")
-      .attr("font-family", "Arial, Helvetica, sans-serif")
-      .attr("x", function(d) {
-          if (d.target.x > d.source.x) { return (d.source.x + (d.target.x - d.source.x)/2); }
-          else { return (d.target.x + (d.source.x - d.target.x)/2); }
-      })
-            .attr("y", function(d) {
-          if (d.target.y > d.source.y) { return (d.source.y + (d.target.y - d.source.y)/2); }
-          else { return (d.target.y + (d.source.y - d.target.y)/2); }
-      })
-      .attr("fill", "Black")
-            .style("font", "normal 40px Arial")
-            .attr("dy", ".35em")
-            .text(function(d) { console.log("test"); return "test"; });
+// var linkText = svg1.selectAll("g")
+//             .data(force.links())
+//           .append("text")
+//       .attr("font-family", "Arial, Helvetica, sans-serif")
+//       .attr("x", function(d) {
+//           if (d.target.x > d.source.x) { return (d.source.x + (d.target.x - d.source.x)/2); }
+//           else { return (d.target.x + (d.source.x - d.target.x)/2); }
+//       })
+//             .attr("y", function(d) {
+//           if (d.target.y > d.source.y) { return (d.source.y + (d.target.y - d.source.y)/2); }
+//           else { return (d.target.y + (d.source.y - d.target.y)/2); }
+//       })
+//       .attr("fill", "Black")
+//             .style("font", "normal 40px Arial")
+//             .attr("dy", ".35em")
+//             .text(function(d) { console.log("test"); return "test"; });
 
-var linkTip = d3.tip()
-    .attr('class', 'd3-tip')
-    .offset([100, 100])
-    .html(function (d) {
-      //console.log("tip triggered");
-    return "<a href='"+d["ref"]+"'>"+d.info+"</a>" ;
-})
-svg1.call(linkTip);
 
-var linkText2 = svg1.selectAll("g")
-  .data(graph.links)
-    .enter()
-    //.append("a")
-    //.attr("xlink:href", "http://www.google.com")
-  .append("text")
+// var linkText2 = svg1.selectAll("g")
+//   .data(graph.links)
+//     .enter()
+//     //.append("a")
+//     //.attr("xlink:href", "http://www.google.com")
+//   .append("text")
   
-  .attr("font-family", "Arial, Helvetica, sans-serif")
-   .attr("fill", "Black")
-            .style("font", "normal 9px Arial")
-    .attr("class", "text")
-    .attr("dx", -30)
-    .attr("dy", 2)
-    //.text(function(d) { return "http://"+d.info})
-    //.
+//   .attr("font-family", "Arial, Helvetica, sans-serif")
+//    .attr("fill", "Black")
+//             .style("font", "normal 9px Arial")
+//     .attr("class", "text")
+//     .attr("dx", -30)
+//     .attr("dy", 2)
+//     //.text(function(d) { return "http://"+d.info})
+//     //.
 
-    .html(function(d) { return "<a href='"+d["ref"]+"'>"+d.info+"</a>"})
-    .call(force.drag);
+//     .html(function(d) { return "<a href='"+d["ref"]+"'>"+d.info+"</a>"})
+//     .call(force.drag);
 
-    link.append("svg:title")
-    .text(function(d) { 
-      console.log("tooltip");
-      return d.info; });
-
-
-
-var tooltip =
-   d3.select('body').append("div")
-    .style("position", "absolute")
-    .style("z-index", "10")
-    .style("visibility", "hidden")
-    .text("a simple tooltip");
+//     link.append("svg:title")
+//     .text(function(d) { 
+//       console.log("tooltip");
+//       return d.info; });
 
 
-    //link.on("mouseover", function(){return tooltip.style("visibility", "visible");})
-   // link.on("mousemover", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
-    //.on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+
+// linkText2.on("mouseover", function(d) {
+//         console.log("mouseover stuff");
+//         console.log(d);
+//         d3.select(this).select("line").transition()
+//         //.style("font", "normal 9px Arial")
+//         .attr("fill", "Blue");
+//         //    .style("font", "normal 9px Arial")
+
+
+//       });
+// var linkTip = d3.tip()
+//     .attr('class', 'd3-tip')
+//     .offset([50, 50])
+//     // .offset(function(){
+//     //   this.getBBox().height / 2, 0
+//     // })
+     
+//     //.direction('s')
+//     .html(function (d) {
+//       //console.log("tip triggered");
+//     return "<a href='"+d["ref"]+"'>"+d.info+"</a>" ;
+// })
+
+// svg1.call(linkTip);
+
+
+
+ var tip2 = d3.select("body").append("div") 
+       .style("position", "absolute")
+       .style("z-index", "10")
+      //.attr("class", "tip2")
+      .style("opacity", 0)
+
+
+// .on("mouseover", function(d) {    
+//             div.transition()
+//         .duration(500)  
+//         .style("opacity", 0);
+//       div.transition()
+//         .duration(200)  
+//         .style("opacity", .9);  
+//       div .html(
+//         '<a href= "http://google.com">' + // The first <a> tag
+//         formatTime(d.date) +
+//         "</a>" +                          // closing </a> tag
+//         "<br/>"  + d.close)  
+//         .style("left", (d3.event.pageX) + "px")      
+//         .style("top", (d3.event.pageY - 28) + "px");
+
+
+var div = d3.select("body")
+  .append("div")  // declare the tooltip div 
+  .attr("class", "tooltip")              // apply the 'tooltip' class
+  .style("opacity", 0);
+
+link.on("mouseover", function(d) {
+    div.transition()
+    .duration(500)
+    .style("opacity", 0);
+       div.transition()
+         .duration(200)  
+         .style("opacity", .9);  
+    tip2.transition()
+      .duration(500)
+      .style("font-size", "42px")
+      .style("font", "normal 42px Arial")
+      .style("opacity", .9)
+      div .html(
+
+        "<a href='"+d["ref"]+"' target='_blank'>"+d.info+"</a>"
+        )
+        //'<a href= "http://google.com">' + // The first <a> tag
+        //formatTime(d.date) +
+        //"</a>" +                          // closing </a> tag
+        //"<br/>"  + d.)  
+        .style("left", (d3.event.pageX) + "px")      
+        .style("top", (d3.event.pageY - 28) + "px");
+    // tip2.html(html)
+    // linkTip.html(html)
+    //   .style("left", (d3.event.pageX + 5) + "px")
+    //   .style("top", (d3.event.pageY - 28) + "px")
+  
+  });
+
+
+
+  // link.on("mouseover", function(d) {
+  //   //console.log("over");
+  //   //html = "Location:" + d;// + " " + d.location + 
+  //    // "<br>Floruit Date:" + " " + d.floruitDate;
+
+  //   tip2.transition()
+  //     .duration(500)
+  //     .style("font-size", "42px")
+  //     .style("font", "normal 42px Arial")
+  //     .style("opacity", .9)
+  //   // tip2.html(html)
+  //   // linkTip.html(html)
+  //   //   .style("left", (d3.event.pageX + 5) + "px")
+  //   //   .style("top", (d3.event.pageY - 28) + "px")
+  
+  // });
+    link.on("mouseout", function() {
+      //console.log("out");
+       tip2.transition()
+         .duration(500)
+         .style("opacity", 0)
+    });
+
+
+
+// var tooltip =
+//    d3.select('body').append("div")
+//     .style("position", "absolute")
+//     .style("z-index", "10")
+//     .style("visibility", "hidden")
+//     .text("a simple tooltip");
+
+   
+
+
+  //link.on("mouseover", function(){return tooltip.style("visibility", "visible");})
+  // link.on("mousemover", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
+   // .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
     //link.on('mouseover', linkTip.show); //Added
     //link.on('mouseout', linkTip.hide); //Added 
+
+    // link.on('mouseover', mouseover); //Added
+    // link.on('mouseout', mouseout); //Added 
+
+function mouseover() {
+    // linkTip.show;
+    this.setAttribute('stroke-width', 30);
+    tooltip.transition()
+            .duration(1)
+            .style("opacity", 0);
+}
+
+function mouseout() {
+    d3.select(this).select("line").transition()
+      
+      //.attr("class", "link")
+      //.duration(750)
+      //.style("stroke-width", function(d) { return relationship2strength[d["type"]]; })
+}
+
+
+
+    //link.on('mouseover', linkText2.show); //Added
+    //link.on('mouseout', linkText2.hide); //Added 
 
 // var node = svg1.selectAll("g")
 //   .data(graph.nodes)
@@ -461,34 +591,37 @@ force.on("tick", function() {
     // text.attr("x", function(d) { return d.x; })
      //   .attr("y", function(d) { return d.y; });
 
-     linkText2
-      .attr("x", function(d) {
-          if (d.target.x > d.source.x) { return (d.source.x + (d.target.x - d.source.x)/2); }
-          else { return (d.target.x + (d.source.x - d.target.x)/2); }
-      })
-      .attr("y", function(d) {
-          if (d.target.y > d.source.y) { return (d.source.y + (d.target.y - d.source.y)/2); }
-          else { return (d.target.y + (d.source.y - d.target.y)/2); }
-      });
-
-      // linkLinks
-      // .attr("x", function(d) {
-      //     if (d.target.x > d.source.x) { return (d.source.x + (d.target.x - d.source.x)/2); }
-      //     else { return (d.target.x + (d.source.x - d.target.x)/2); }
-      // })
-      // .attr("y", function(d) {
-      //     if (d.target.y > d.source.y) { return (d.source.y + (d.target.y - d.source.y)/2); }
-      //     else { return (d.target.y + (d.source.y - d.target.y)/2); }
-      // });
+     // linkText2
+     //  .attr("x", function(d) {
+     //      if (d.target.x > d.source.x) { return (d.source.x + (d.target.x - d.source.x)/2); }
+     //      else { return (d.target.x + (d.source.x - d.target.x)/2); }
+     //  })
+     //  .attr("y", function(d) {
+     //      if (d.target.y > d.source.y) { return (d.source.y + (d.target.y - d.source.y)/2); }
+     //      else { return (d.target.y + (d.source.y - d.target.y)/2); }
+     //  });
 
 
 
 
 });
+var legend = svg1.selectAll(".legend")
+      .data(["Partners","Investment","Acquisition"])
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+legend.append("rect")
+      .attr("x", width - 18)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", function(d) { return relationship2color[d];});
 
-//.attr("transform", "translate(-40,-40)");
-// ------------------------------------------------------------------------------------
-
+  legend.append("text")
+      .attr("x", width - 24)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
 
 
 
