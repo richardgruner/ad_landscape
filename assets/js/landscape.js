@@ -183,7 +183,7 @@ relationship2strength["Acquisition"]=7;
 // ------------------------------------------------------------------------------------
 // viz
 
-var width = 960,
+var width = 850,
     height = 500;
 
 var color = d3.scale.category20();
@@ -193,8 +193,8 @@ svg1 = d3.select("#landscape").append("svg")
     .attr("height", height);
 
 var force = d3.layout.force()
-    .charge(-400)
-    .linkDistance(170)
+    .charge(-1000) // worked well: 400
+    .linkDistance(200) // worked well: 
     .size([width, height])
     .nodes(graph.nodes)
     .links(graph.links)
@@ -229,6 +229,10 @@ var link = svg1.selectAll("g")
     //})
     ;
 
+//link.on("mouseover", function() { d3.select(this).style("stroke","red"); });
+    
+
+
 var linkLinks = svg1.selectAll("g")
   .data(force.links())
   .append("svg:a")
@@ -258,6 +262,15 @@ var linkText = svg1.selectAll("g")
             .attr("dy", ".35em")
             .text(function(d) { console.log("test"); return "test"; });
 
+var linkTip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([100, 100])
+    .html(function (d) {
+      //console.log("tip triggered");
+    return "<a href='"+d["ref"]+"'>"+d.info+"</a>" ;
+})
+svg1.call(linkTip);
+
 var linkText2 = svg1.selectAll("g")
   .data(graph.links)
     .enter()
@@ -272,8 +285,32 @@ var linkText2 = svg1.selectAll("g")
     .attr("dx", -30)
     .attr("dy", 2)
     //.text(function(d) { return "http://"+d.info})
+    //.
+
     .html(function(d) { return "<a href='"+d["ref"]+"'>"+d.info+"</a>"})
-  .call(force.drag);
+    .call(force.drag);
+
+    link.append("svg:title")
+    .text(function(d) { 
+      console.log("tooltip");
+      return d.info; });
+
+
+
+var tooltip =
+   d3.select('body').append("div")
+    .style("position", "absolute")
+    .style("z-index", "10")
+    .style("visibility", "hidden")
+    .text("a simple tooltip");
+
+
+    //link.on("mouseover", function(){return tooltip.style("visibility", "visible");})
+   // link.on("mousemover", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
+    //.on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+
+    //link.on('mouseover', linkTip.show); //Added
+    //link.on('mouseout', linkTip.hide); //Added 
 
 // var node = svg1.selectAll("g")
 //   .data(graph.nodes)
@@ -285,7 +322,6 @@ var linkText2 = svg1.selectAll("g")
 //   .call(force.drag);
 
 var image_size = 32
-
 
 //Toggle stores whether the highlighting is on
 var toggle = 0;
@@ -323,14 +359,14 @@ function connectedNodes() {
 }
 
 
-
-var tip = d3.tip()
-    .attr('class', 'd3-tip')
-    .offset([-5, 0])
-    .html(function (d) {
-    return  "<div class='button'>  <button type='submit'>" + d["info_content"] +"</button> </div></form>" ;
-})
-svg1.call(tip);
+// Add again when we have meaningfull stuff to show for each company!!
+// var tip = d3.tip()
+//     .attr('class', 'd3-tip')
+//     .offset([-5, 0])
+//     .html(function (d) {
+//     return  "<div class='button'>  <button type='submit'>" + d["info_content"] +"</button> </div></form>" ;
+// })
+// svg1.call(tip);
 
 
 
@@ -349,8 +385,8 @@ var node = svg1.selectAll(".node")
     .attr("width", image_size*2)
     .attr("height", image_size*2)
      .call(force.drag)
-     .on('mouseover', tip.show) //Added
- .on('mouseout', tip.hide) //Added 
+     //.on('mouseover', tip.show) //Added
+ //.on('mouseout', tip.hide) //Added 
 .on('dblclick', connectedNodes);
 // var node2 = svg1.selectAll(".node")
 //     .data(graph.nodes)
@@ -373,22 +409,32 @@ var node = svg1.selectAll(".node")
 //       .text(function(d) { return d.name });
 
 // add text, only show the first 5 characters (via _.first("blah", 5) )
-var text = svg1.selectAll("g")
-  .data(graph.nodes)
-    .enter()
-  .append("text")
-    .attr("class", "text")
-    .attr("dx", -6)
-    .attr("dy", 2)
-    .text(function(d) { return d.name})
-  .call(force.drag);
+// var text = svg1.selectAll("g")
+//   .data(graph.nodes)
+//     .enter()
+//   .append("text")
+//     .attr("class", "text")
+//     .attr("dx", -6)
+//     .attr("dy", 2)
+//     .text(function(d) { return d.name})
+//   .call(force.drag);
 
+
+
+ r = 30
 force.on("tick", function() {
-    link.attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
+    link.attr("x1", function(d) { return Math.max(r, Math.min(width - r, d.source.x)); })
+        .attr("y1", function(d) { return Math.max(r, Math.min(height - r, d.source.y)); })
+        .attr("x2", function(d) { return Math.max(r, Math.min(width - r, d.target.x)); })
+        .attr("y2", function(d) { return Math.max(r, Math.min(height - r, d.target.y)); });
     
+        // link.attr("x1", function(d) { return d.source.x; })
+        // .attr("y1", function(d) { return d.source.y; })
+        // .attr("x2", function(d) { return d.target.x; })
+        // .attr("y2", function(d) { return d.target.y; });
+    
+
+
 // link.attr("d", function(d) {
 //     var dx = d.target.x - d.source.x,
 //         dy = d.target.y - d.source.y,
@@ -404,7 +450,12 @@ force.on("tick", function() {
      //   .attr("cy", function(d) { return d.y; });
 
     //node2.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-      node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+      node.attr("transform", function(d) { return "translate(" + Math.max(r, Math.min(width - r, d.x)) + "," + 
+        Math.max(r, Math.min(height - r, d.y)) + ")"; });
+
+
+    //node.attr("cx", function(d) { return d.x = Math.max(r, Math.min(w - r, d.x)); })
+    //    .attr("cy", function(d) { return d.y = Math.max(r, Math.min(h - r, d.y)); });
 
     // text.attr("x", function(d) { return d.x; })
      //   .attr("y", function(d) { return d.y; });
@@ -419,15 +470,15 @@ force.on("tick", function() {
           else { return (d.target.y + (d.source.y - d.target.y)/2); }
       });
 
-      linkLinks
-      .attr("x", function(d) {
-          if (d.target.x > d.source.x) { return (d.source.x + (d.target.x - d.source.x)/2); }
-          else { return (d.target.x + (d.source.x - d.target.x)/2); }
-      })
-      .attr("y", function(d) {
-          if (d.target.y > d.source.y) { return (d.source.y + (d.target.y - d.source.y)/2); }
-          else { return (d.target.y + (d.source.y - d.target.y)/2); }
-      });
+      // linkLinks
+      // .attr("x", function(d) {
+      //     if (d.target.x > d.source.x) { return (d.source.x + (d.target.x - d.source.x)/2); }
+      //     else { return (d.target.x + (d.source.x - d.target.x)/2); }
+      // })
+      // .attr("y", function(d) {
+      //     if (d.target.y > d.source.y) { return (d.source.y + (d.target.y - d.source.y)/2); }
+      //     else { return (d.target.y + (d.source.y - d.target.y)/2); }
+      // });
 
 
 
