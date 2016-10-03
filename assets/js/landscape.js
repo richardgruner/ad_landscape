@@ -102,17 +102,17 @@ company_type2group["Supplier"] = 2;
 
 //nodes = company_data.map(function(d,i){ 
 nodes = names_index.map(function(d,i){ 
-    return { "name":d, "group":1,
-    "info_content": d+" is a manufacturer of AD stuff" }; 
+	return { "name":d, "group":1,
+		"info_content": d+" is a manufacturer of AD stuff" }; 
 });
 
- nodes2 = company_data.map(function(d,i){ 
-     return { 
-        "name":d["company"], 
-        "img":d["img"],
-        "group":company_type2group[d["company_type"]],
-        "info_content": d["company"]+" is a manufacturer of AD stuff" }; 
- });
+nodes2 = company_data.map(function(d,i){ 
+	return { 
+		"name":d["company"], 
+		"img":d["img"],
+		"group":company_type2group[d["company_type"]],
+		"info_content": d["company"]+" is a manufacturer of AD stuff" }; 
+});
 
 
 new_nodes = [];
@@ -120,7 +120,7 @@ var values = Object.keys(names_index).map(function(key){
     return names_index[key];
 });
 
- console.log("external nodes",nodes2,names_index,values);
+console.log("external nodes",nodes2,names_index,values);
 
 for (var i in nodes2) {
     //console.log("name",nodes2[i]["name"]);
@@ -188,8 +188,8 @@ relationship2color["Acquisition"]='red';
 // ------------------------------------------------------------------------------------
 // viz
 
-var width = 850,
-    height = 500;
+var width = 700,
+    height = 700;
 
 var color = d3.scale.category20();
 
@@ -199,7 +199,7 @@ svg1 = d3.select("#landscape").append("svg")
 
 var force = d3.layout.force()
     .charge(-1000) // worked well: 400
-    .linkDistance(200) // worked well: 
+    .linkDistance(170) // worked well: 
     .size([width, height])
     .nodes(graph.nodes)
     .links(graph.links)
@@ -360,6 +360,7 @@ link.on("mouseover", function(d) {
       div .html(
 
         "<a href='"+d["ref"]+"' target='_blank'>"+d.info+"</a>"
+        // "<a href='"+d["ref"]+"' target='_blank'>"+1234+"</a>"
         )
         //'<a href= "http://google.com">' + // The first <a> tag
         //formatTime(d.date) +
@@ -508,8 +509,8 @@ var node = svg1.selectAll(".node")
     //.style("fill", function(d) { return color(d.group); })
     .append("image")
     .attr("class", "node")
-    //.attr("xlink:href", function(d) {return "https://s3.amazonaws.com/intellifyus/ad_landscape/assets/images/icons/"+d.name.toLowerCase()+".png";})
-    .attr("xlink:href", function(d) {return "assets/images/icons/"+d.name.toLowerCase()+".png";})
+    .attr("xlink:href", function(d) {return "https://s3.amazonaws.com/intellifyus/ad_landscape/assets/images/icons/"+d.name.toLowerCase()+".png";})
+    //.attr("xlink:href", function(d) {return "assets/images/icons/"+d.name.toLowerCase()+".png";})
     //.attr("xlink:href", function(d) {return "assets/images/icons/"+d.img;})
     .attr("x", -image_size)
     .attr("y", -image_size)
