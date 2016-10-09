@@ -231,20 +231,25 @@ var link = svg1.selectAll("g")
     //.attr("marker-end", function(d,i) { 
       //  return "url(#arrow-" + d["type"][0] + ")"; 
     //})
-    ;
+    .on("click", function(d){
+      console.log(d);
+      
+      window.open(d["ref"]);
+      //alert("You clicked on node ");
+    });
 
 
-var linkLinks = svg1.selectAll("g")
-  .data(force.links())
-  .append("svg:a")
-  .attr("xlink:href", function(d){ return "http://www.google.com"})
-  .attr("target", "_blank")
-  .append("text")
-  .attr("dy", 3.5)
-  .attr("dx", -5.5)
-  .attr("text-anchor", "start")
-  .text(function(d) { return d.info})
-  .call(force.drag);
+// var linkLinks = svg1.selectAll("g")
+//   .data(force.links())
+//   .append("svg:a")
+//   .attr("xlink:href", function(d){ return "http://www.google.com"})
+//   .attr("target", "_blank")
+//   .append("text")
+//   .attr("dy", 3.5)
+//   .attr("dx", -5.5)
+//   .attr("text-anchor", "start")
+//   .text(function(d) { return d.info})
+//   .call(force.drag);
 
 // var linkText = svg1.selectAll("g")
 //             .data(force.links())
@@ -345,7 +350,9 @@ var div = d3.select("body")
   .attr("class", "tooltip")              // apply the 'tooltip' class
   .style("opacity", 0);
 
-link.on("mouseover", function(d) {
+
+
+link.on("mouseover2", function(d) {
 
     console.log("tooltip touched");
     div.transition()
@@ -359,7 +366,8 @@ link.on("mouseover", function(d) {
       .style("font-size", "42px")
       .style("font", "normal 42px Arial")
       .style("opacity", .9)
-      div .html(
+      div 
+      .html(
         "<a href='"+d["ref"]+"' target='_blank'>"+d.info+"</a>"
         // "<a href='"+d["ref"]+"' target='_blank'>"+1234+"</a>"
         )
@@ -373,11 +381,31 @@ link.on("mouseover", function(d) {
     // linkTip.html(html)
     //   .style("left", (d3.event.pageX + 5) + "px")
     //   .style("top", (d3.event.pageY - 28) + "px")
-  
   });
 
 
+var tip3 = d3.tip()
+    .attr('class', 'd3-tip')
+    //.transition()
+    
+    .offset([100, 0])
+    .html(function (d) {
+    return  "<div class='button'>  <button type='submit'>" + "<a href='"+d["ref"]+"' target='_blank'>"+d.info+"</a>"+"</button> </div></form>" ;
+    //return  "<a href='"+d["ref"]+"'>"+d.info+"</a>" ;
 
+
+})
+    // tip3.transition()
+    // .delay(500)
+    // .style('display', 'none');
+
+
+svg1.call(tip3);
+
+
+link.on("mouseover",tip3.show)
+
+link.on("mouseout",tip3.hide)
   // link.on("mouseover", function(d) {
   //   //console.log("over");
   //   //html = "Location:" + d;// + " " + d.location + 
@@ -394,7 +422,7 @@ link.on("mouseover", function(d) {
   //   //   .style("top", (d3.event.pageY - 28) + "px")
   
   // });
-    link.on("mouseout", function() {
+    link.on("mouseout2", function() {
       //console.log("out");
        tip2.transition()
          .duration(500)
@@ -423,21 +451,17 @@ link.on("mouseover", function(d) {
     // link.on('mouseover', mouseover); //Added
     // link.on('mouseout', mouseout); //Added 
 
-function mouseover() {
-    // linkTip.show;
-    this.setAttribute('stroke-width', 30);
-    tooltip.transition()
-            .duration(1)
-            .style("opacity", 0);
-}
+// function mouseover() {
+//     // linkTip.show;
+//     this.setAttribute('stroke-width', 30);
+//     tooltip.transition()
+//             .duration(1)
+//             .style("opacity", 0);
+// }
 
-function mouseout() {
-    d3.select(this).select("line").transition()
-      
-      //.attr("class", "link")
-      //.duration(750)
-      //.style("stroke-width", function(d) { return relationship2strength[d["type"]]; })
-}
+// function mouseout() {
+//     d3.select(this).select("line").transition()
+// }
 
 
 
@@ -518,8 +542,8 @@ var node = svg1.selectAll(".node")
     .attr("width", image_size*2)
     .attr("height", image_size*2)
      .call(force.drag)
-     .on('mouseover', tip.show) //Added
- .on('mouseout', tip.hide) //Added 
+     //.on('mouseover', tip.show) //Added
+ //.on('mouseout', tip.hide) //Added 
 .on('dblclick', connectedNodes);
 // var node2 = svg1.selectAll(".node")
 //     .data(graph.nodes)
