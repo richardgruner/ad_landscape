@@ -346,6 +346,8 @@ var div = d3.select("body")
   .style("opacity", 0);
 
 link.on("mouseover", function(d) {
+
+    console.log("tooltip touched");
     div.transition()
     .duration(500)
     .style("opacity", 0);
@@ -358,7 +360,6 @@ link.on("mouseover", function(d) {
       .style("font", "normal 42px Arial")
       .style("opacity", .9)
       div .html(
-
         "<a href='"+d["ref"]+"' target='_blank'>"+d.info+"</a>"
         // "<a href='"+d["ref"]+"' target='_blank'>"+1234+"</a>"
         )
@@ -491,13 +492,13 @@ function connectedNodes() {
 
 
 // Add again when we have meaningfull stuff to show for each company!!
-// var tip = d3.tip()
-//     .attr('class', 'd3-tip')
-//     .offset([-5, 0])
-//     .html(function (d) {
-//     return  "<div class='button'>  <button type='submit'>" + d["info_content"] +"</button> </div></form>" ;
-// })
-// svg1.call(tip);
+var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-5, 0])
+    .html(function (d) {
+    return  "<div class='button'>  <button type='submit'>" + d["info_content"] +"</button> </div></form>" ;
+})
+svg1.call(tip);
 
 
 
@@ -517,8 +518,8 @@ var node = svg1.selectAll(".node")
     .attr("width", image_size*2)
     .attr("height", image_size*2)
      .call(force.drag)
-     //.on('mouseover', tip.show) //Added
- //.on('mouseout', tip.hide) //Added 
+     .on('mouseover', tip.show) //Added
+ .on('mouseout', tip.hide) //Added 
 .on('dblclick', connectedNodes);
 // var node2 = svg1.selectAll(".node")
 //     .data(graph.nodes)
