@@ -534,7 +534,7 @@ var node = svg1.selectAll(".node")
     //.style("fill", function(d) { return color(d.group); })
     .append("image")
     .attr("class", "node")
-    .attr("xlink:href", function(d) {return "https://s3.amazonaws.com/intellifyus/ad_landscape/assets/images/icons/"+d.name.toLowerCase()+".png";})
+    .attr("xlink:href", function(d) {return "https://s3.amazonaws.com/intellifyus/ad_landscape/assets/images/icons/"+d.name.replace(" ", "_").toLowerCase()+".png";})
     //.attr("xlink:href", function(d) {return "assets/images/icons/"+d.name.toLowerCase()+".png";})
     //.attr("xlink:href", function(d) {return "assets/images/icons/"+d.img;})
     .attr("x", -image_size)
@@ -632,7 +632,7 @@ force.on("tick", function() {
 
 });
 var legend = svg1.selectAll(".legend")
-      .data(["Partners","Investment","Acquisition"])
+      .data(["Partners","Investment","Ownership"])
     .enter().append("g")
       .attr("class", "legend")
       .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
