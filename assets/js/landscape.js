@@ -1,73 +1,4 @@
 
-relations_data = [
-  {
-    "from": "BMW",
-    "n": 1,
-    "to": "Drive",
-    "data": [
-      {
-        "type": "Partnership",
-        "frequency": 1
-      }
-    ]
-  },
-  {
-    "from": "GM",
-    "n": 1,
-    "to": "Cruise",
-    "data": [
-      {
-        "type": "Acquisition",
-        "frequency": 1
-      }
-    ]
-  },
-    {
-    "from": "GM",
-    "n": 1,
-    "to": "Lyft",
-    "data": [
-      {
-        "type": "Investment",
-        "frequency": 1
-      }
-    ]
-  }]
-
-
-company_data = [
-  {
-    "company":"BMW",
-    "company_type":"OEM",
-    "technology_type":"AD",
-    "img":"assets/images/icons/bmw.png"
-  },
-    {
-    "company":"DriveNow",
-    "company_type":"Supplier",
-    "technology_type":"AD",
-    "img":"assets/images/icons/gm.png"
-  },
-    {
-    "company":"GM",
-    "company_type":"OEM",
-    "technology_type":"AD",
-    "img":"assets/images/icons/drivenow.png"
-  },
-  {
-    "company":"Cruise",
-    "company_type":"Startup",
-    "technology_type":"AD",
-    "img":"assets/images/icons/cruise.png"
-  },
-  {
-    "company":"Lyft",
-    "company_type":"Startup",
-    "technology_type":"AD",
-    "img":"assets/images/icons/lyft.png"
-  }
-]
-
 var relations_data = JSON.parse(relations);
 var company_data = JSON.parse(companies);
 
@@ -184,6 +115,11 @@ relationship2color = {};
 relationship2color["Partners"]='green';
 relationship2color["Investment"]='orange';
 relationship2color["Acquisition"]='red';
+
+relationship2legend = {};
+relationship2legend["Partners"]='green';
+relationship2legend["Investment"]='orange';
+relationship2legend["Ownership"]='red';
 
 // ------------------------------------------------------------------------------------
 // viz
@@ -640,7 +576,7 @@ legend.append("rect")
       .attr("x", width - 18)
       .attr("width", 18)
       .attr("height", 18)
-      .style("fill", function(d) { return relationship2color[d];});
+      .style("fill", function(d) { return relationship2legend[d];});
 
   legend.append("text")
       .attr("x", width - 24)
