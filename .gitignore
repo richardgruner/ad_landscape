@@ -3,6 +3,7 @@
 
 *.sublime-*
 
+\assets\images\icons\local\*
 
 # vim-related
 [._]*.s[a-w][a-z]
