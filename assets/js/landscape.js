@@ -109,17 +109,12 @@ tags_index.map(function(d,i){
 relationship2strength = {};
 relationship2strength["Partners"]=6;
 relationship2strength["Investment"]=6;
-relationship2strength["Acquisition"]=6;
+relationship2strength["Ownership"]=6;
 
 relationship2color = {};
-relationship2color["Partners"]='green';
-relationship2color["Investment"]='orange';
-relationship2color["Acquisition"]='red';
-
-relationship2legend = {};
-relationship2legend["Partners"]='green';
-relationship2legend["Investment"]='orange';
-relationship2legend["Ownership"]='red';
+relationship2color["Partners"]='#9EC0FF';
+relationship2color["Investment"]='#306CDB';
+relationship2color["Ownership"]='#00318C';
 
 // ------------------------------------------------------------------------------------
 // viz
@@ -135,7 +130,7 @@ svg1 = d3.select("#landscape").append("svg")
 
 var force = d3.layout.force()
     .charge(-1000) // worked well: 400
-    .linkDistance(170) // worked well: 
+    .linkDistance(170)
     .size([width, height])
     .nodes(graph.nodes)
     .links(graph.links)
@@ -358,12 +353,12 @@ link.on("mouseout",tip3.hide)
   //   //   .style("top", (d3.event.pageY - 28) + "px")
   
   // });
-    link.on("mouseout2", function() {
-      //console.log("out");
-       tip2.transition()
-         .duration(500)
-         .style("opacity", 0)
-    });
+link.on("mouseout2", function() {
+  //console.log("out");
+   tip2.transition()
+     .duration(500)
+     .style("opacity", 0)
+});
 
 
 
@@ -576,7 +571,7 @@ legend.append("rect")
       .attr("x", width - 18)
       .attr("width", 18)
       .attr("height", 18)
-      .style("fill", function(d) { return relationship2legend[d];});
+      .style("fill", function(d) { return relationship2color[d];});
 
   legend.append("text")
       .attr("x", width - 24)
