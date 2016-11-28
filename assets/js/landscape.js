@@ -127,8 +127,12 @@ var width = 700,
 var color = d3.scale.category20();
 
 svg1 = d3.select("#landscape").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+   .classed("svg-container", true) //container class to make it responsive
+   .attr("preserveAspectRatio", "xMinYMin meet")
+   .attr("viewBox","0 0 " + width + " " + height)
+//    .attr("width", width)
+//    .attr("height", height);
+
 
 var force = d3.layout.force()
     .charge(-1000) // worked well: 400
