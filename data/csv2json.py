@@ -11,17 +11,17 @@ relations_dict = defaultdict(lambda: [])
 
 with open('relations.csv', 'r') as csvfile:
     for idx,line in enumerate(csvfile):
-        if idx==0 or idx>13:
+        if idx==0 or line.split(',')[0]!='x':
         	continue
 
         line = line.split(',')
         print line
-        date = line[4].split("/")
-
+        date = line[5].split("/")
+        print date
         new_date= datetime.datetime(2000+int(date[2]),int(date[0]),int(date[1]))
-        info = re.sub('[^a-zA-Z\d\s]+','', line[5])
+        info = re.sub('[^a-zA-Z\d\s]+','', line[6])
 
-        relations_dict[(line[1],line[2])].append((line[3],new_date,info.rstrip(),line[6].rstrip()))
+        relations_dict[(line[2],line[3])].append((line[4],new_date,info.rstrip(),line[7].rstrip()))
 
 print relations_dict
 
@@ -52,7 +52,7 @@ companies = []
 with open('companies.csv', 'r') as csvfile:
    
     for idx,line in enumerate(csvfile):
-        
+        print line
         line = line.split(',')
         if idx==0 or not line[2] or line[2]=="" or line[2]!="mvp":
             continue

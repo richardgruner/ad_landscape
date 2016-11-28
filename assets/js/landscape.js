@@ -109,17 +109,14 @@ tags_index.map(function(d,i){
 relationship2strength = {};
 relationship2strength["Partners"]=6;
 relationship2strength["Investment"]=6;
-relationship2strength["Acquisition"]=6;
+relationship2strength["Ownership"]=6;
 
 relationship2color = {};
-relationship2color["Partners"]='green';
-relationship2color["Investment"]='orange';
-relationship2color["Acquisition"]='red';
+relationship2color["Partners"]='#bcd3ff';//'#9EC0FF';
+relationship2color["Investment"]='#306CDB';
+relationship2color["Ownership"]='#02008c';//'#00318C';
 
-relationship2legend = {};
-relationship2legend["Partners"]='green';
-relationship2legend["Investment"]='orange';
-relationship2legend["Ownership"]='red';
+
 
 // ------------------------------------------------------------------------------------
 // viz
@@ -299,8 +296,8 @@ link.on("mouseover2", function(d) {
          .style("opacity", .9);  
     tip2.transition()
       .duration(500)
-      .style("font-size", "42px")
-      .style("font", "normal 42px Arial")
+      .style("font-size", "12px")
+      .style("font", "normal 12px Arial")
       .style("opacity", .9)
       div 
       .html(
@@ -576,7 +573,8 @@ legend.append("rect")
       .attr("x", width - 18)
       .attr("width", 18)
       .attr("height", 18)
-      .style("fill", function(d) { return relationship2legend[d];});
+      .style("fill", function(d) { return relationship2color[d];})
+    .style("opacity",0.7);
 
   legend.append("text")
       .attr("x", width - 24)
