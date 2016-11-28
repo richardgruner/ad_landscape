@@ -112,17 +112,11 @@ relationship2strength["Investment"]=6;
 relationship2strength["Ownership"]=6;
 
 relationship2color = {};
-<<<<<<< HEAD
+
 relationship2color["Partners"]='#bcd3ff';//'#9EC0FF';
 relationship2color["Investment"]='#306CDB';
 relationship2color["Ownership"]='#02008c';//'#00318C';
 
-
-=======
-relationship2color["Partners"]='#9EC0FF';
-relationship2color["Investment"]='#306CDB';
-relationship2color["Ownership"]='#00318C';
->>>>>>> 788a094d75d7b9b7d3bb668f3d9e31ff0e936d85
 
 // ------------------------------------------------------------------------------------
 // viz
@@ -579,12 +573,9 @@ legend.append("rect")
       .attr("x", width - 18)
       .attr("width", 18)
       .attr("height", 18)
-<<<<<<< HEAD
       .style("fill", function(d) { return relationship2color[d];})
     .style("opacity",0.7);
-=======
-      .style("fill", function(d) { return relationship2color[d];});
->>>>>>> 788a094d75d7b9b7d3bb668f3d9e31ff0e936d85
+
 
   legend.append("text")
       .attr("x", width - 24)
