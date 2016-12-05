@@ -122,7 +122,7 @@ relationship2color["Ownership"]='#02008c';//'#00318C';
 // viz
 
 var width = 700,
-    height = 700;
+    height = 800;
 
 var color = d3.scale.category20();
 
@@ -135,8 +135,8 @@ svg1 = d3.select("#landscape").append("svg")
 
 
 var force = d3.layout.force()
-    .charge(-1000) // worked well: 400
-    .linkDistance(170)
+    .charge(-800) // worked well: 400
+    .linkDistance(150)
     .size([width, height])
     .nodes(graph.nodes)
     .links(graph.links)
@@ -149,7 +149,7 @@ svg1.append('svg:defs').selectAll("marker")
   .append('svg:marker')
     .attr('id', function(d,i) { return "arrow-" + d; })
     .attr('viewBox', '0 -5 10 10')
-    .attr('refX', 25)  // how far away the arrow goes from the circle (manual tune)
+    .attr('refX', 0)  // how far away the arrow goes from the circle (manual tune)
     .attr("refY", 0)
     .attr('markerWidth', 6)
     .attr('markerHeight', 6)

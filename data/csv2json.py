@@ -11,14 +11,14 @@ relations_dict = defaultdict(lambda: [])
 
 with open('relations.csv', 'r') as csvfile:
     for idx,line in enumerate(csvfile):
-        if idx==0 or line.split(',')[0]!='x':
+        if idx==0 or line.split(';')[0]!='x':
         	continue
 
-        line = line.split(',')
+        line = line.split(';')
         print line
         date = line[5].split("/")
         print date
-        new_date= datetime.datetime(2000+int(date[2]),int(date[0]),int(date[1]))
+        new_date= datetime.datetime(int(date[2]),int(date[0]),int(date[1]))
         info = re.sub('[^a-zA-Z\d\s]+','', line[6])
 
         relations_dict[(line[2],line[3])].append((line[4],new_date,info.rstrip(),line[7].rstrip()))
@@ -49,17 +49,17 @@ with open('relations.js', 'w') as fp:
 
 companies = []
 
+print(companies)
+
 with open('companies.csv', 'r') as csvfile:
    
     for idx,line in enumerate(csvfile):
         print line
-        line = line.split(',')
-        if idx==0 or not line[2] or line[2]=="" or line[2]!="mvp":
+        line = line.split(';')
+        if idx==0 or not line[2] or line[2]=="" or not (line[2]=="mvp" or line[2]=="include"):
             continue
-        #print line
-       	print line[1]
+        print line
 
-        #print line
         companies.append({"company":line[1],"company_type":line[3],\
         	"technology_type":line[4],"size":line[5],"img":""})
 

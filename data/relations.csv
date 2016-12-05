@@ -1,100 +1,100 @@
-,RID,Active_company,Passive_company,Relation_type,Date_since,Relation_details,Information_source
-x,1,GM,Cruise,Ownership,3/11/16,GM acquires Cruise to accelerate autonomous vehicle development.,http://media.gm.com/media/us/en/gm/home.detail.html/content/Pages/news/us/en/2016/mar/0311-cruise.html
-x,2,Didi Chuxing,Uber,Investment,7/31/16,Both companies perform cross-investments to settle competition in China.,http://www.bloomberg.com/news/articles/2016-08-01/uber-said-to-merge-china-business-with-didi-in-35-billion-deal
-x,3,GM,Lyft,Investment,1/5/16,GM invests $500 million in Lyft and sets out self-driving car partnership.,http://www.reuters.com/article/us-gm-lyft-investment-idUSKBN0UI1A820160105
-x,4,BMW,DriveNow,Ownership,6/1/11,DriveNow is a joint venture of BMW and Sixt.,https://en.wikipedia.org/wiki/DriveNow
-x,5,Daimler_Mercedes,Car2go,Ownership,10/1/08,Car2go is 100% owned by Daimler.,https://en.wikipedia.org/wiki/Car2Go
-x,7,BMW,Mobileye,Partners,7/1/16,BMW Intel and Mobileye form a partnership to work on self-driving cars.,http://ir.mobileye.com/investor-relations/press-releases/press-release-details/2016/BMW-Group-Intel-and-Mobileye-Team-Up-to-Bring-Fully-Autonomous-Driving-to-Streets-by-2021/default.aspx
-x,8,BMW,Intel,Partners,7/1/16,BMW Intel and Mobileye form a partnership to work on self-driving cars.,http://ir.mobileye.com/investor-relations/press-releases/press-release-details/2016/BMW-Group-Intel-and-Mobileye-Team-Up-to-Bring-Fully-Autonomous-Driving-to-Streets-by-2021/default.aspx
-x,9,BMW,Here,Ownership,12/4/16,Consortium of BMW Audi Daimler & others buys Here from Nokia.,https://techcrunch.com/2015/12/04/nokia-closes-its-2-8b-sale-of-here-to-the-audi-bmw-and-daimler-car-consortium/
-x,10,Audi,Here,Ownership,12/4/16,Consortium of BMW Audi Daimler & others buys Here from Nokia.,https://techcrunch.com/2015/12/04/nokia-closes-its-2-8b-sale-of-here-to-the-audi-bmw-and-daimler-car-consortium/
-x,11,Daimler_Mercedes,Here,Ownership,12/4/16,Consortium of BMW Audi Daimler & others buys Here from Nokia.,https://techcrunch.com/2015/12/04/nokia-closes-its-2-8b-sale-of-here-to-the-audi-bmw-and-daimler-car-consortium/
-x,12,Audi,Nvidia,Partners,6/6/16,Nvidia and Audi form a collaboration on autonomous driving related computation.,http://europe.autonews.com/article/20160607/ANE/160609921/carmakers-tap-nvidias-supercomputer-to-make-leap-toward-self-driving
-x,13,Baidu,Nvidia,Partners,8/31/16,Baidu and Nvidia decide to work mutually on Cloud-to-Car map system.,https://blogs.nvidia.com/blog/2016/08/31/baidu-nvidia-worlds-first-map-to-car-platform-self-driving-cars/
-x,14,VW,Audi,Ownership,1/1/65,Audi is a complete VW brand.,http://www.volkswagenag.com/
-x,15,Baidu,Velodyne,Investment,8/16/16,Baidu invests $M75 in Velodyne together with Ford.,http://www.forbes.com/sites/samabuelsamid/2016/08/16/ford-and-baidu-lead-new-150-million-investment-in-lidar-maker-velodyne/#5053c0b47492
-x,16,Ford,Velodyne,Investment,8/16/16,Ford invests $M75 in Velodyne together with Baidu.,http://www.forbes.com/sites/samabuelsamid/2016/08/16/ford-and-baidu-lead-new-150-million-investment-in-lidar-maker-velodyne/#5053c0b47492
-x,17,Delphi,Mobileye,Partners,8/23/16,Delphi and Mobileye are teaming up to build a self-driving system by 2019.,http://www.theverge.com/2016/8/23/12603624/delphi-mobileye-self-driving-autonomous-car-2019
-x,18,Fiat_crysler,Google,Partners,5/3/16,Google and Fiat Chrysler announce driverless cars deal.,http://www.bbc.com/news/business-36199738
-x,19,Uber,Otto,Ownership,8/18/16,Uber acquires Otto to lead Uber’s self-driving car effort.,https://techcrunch.com/2016/08/18/uber-acquires-otto-to-lead-ubers-self-driving-car-effort-report-says/
-x,20,Uber,Volvo,Partners,8/18/16,Volvo partners with Uber on self-driving cars.,http://fortune.com/2016/08/18/volvo-uber-partner-on-self-driving-cars/
-x,21,Intel,Mobileye,Partners,7/1/16,BMW Intel and Mobileye form a partnership to work on self-driving cars.,http://ir.mobileye.com/investor-relations/press-releases/press-release-details/2016/BMW-Group-Intel-and-Mobileye-Team-Up-to-Bring-Fully-Autonomous-Driving-to-Streets-by-2021/default.aspx
-x,22,Tesla,Nvidia,Partners,10/11/16,Nvidia and Tesla form a Hardware partnership for self-driving cars.,http://seekingalpha.com/article/4011506-nvidia-tesla-partnership-huge-win
-x,23,Toyota,Uber,Partners,5/25/16,Uber and Toyota announce major partnership.,http://www.inquisitr.com/3129948/uber-and-toyota-just-announced-a-major-partnership/
-,24,,,,,,
-,25,,,,,,
-,26,Apple,,,,,
-,27,VW,,,,,
-,28,Baidu,,,,,
-,29,BMW,,,,,
-,30,Bosch,,,,,
-,31,Daimler_Mercedes,,,,,
-,32,GM,,,,,
-,33,Google,,,,,
-,34,Nvidia,,,,,
-,35,Tesla,,,,,
-,36,Uber,,,,,
-,37,Lyft,,,,,
-,38,Zoox,,,,,
-,39,Cruise,,,,,
-,40,Faraday Future,,,,,
-,41,Car2go,,,,,
-,42,DriveNow,,,,,
-,43,Didi Chuxing,,,,,
-,44,,,,,,
-,45,,,,,,
-,46,,,,,,
-,47,,,,,,
-,48,,,,,,
-,49,,,,,,
-,50,Apple,Apple,Partners,,,
-,51,VW,VW,Partners,,,
-,52,Baidu,Baidu,Partners,,,
-,53,BMW,BMW,Partners,,,
-,54,Bosch,Bosch,Partners,,,
-,55,Daimler_Mercedes,Daimler_Mercedes,Partners,,,
-,56,GM,GM,Partners,,,
-,57,Google,Google,Partners,,,
-,58,Intel,Intel,Partners,,,
-,59,Mobileye,Mobileye,Partners,,,
-,60,Nvidia,Nvidia,Partners,,,
-,61,Here,Here,Partners,,,
-,62,Tesla,Tesla,Partners,,,
-,63,Uber,Uber,Partners,,,
-,64,Lyft,Lyft,Partners,,,
-,65,Zoox,Zoox,Partners,,,
-,66,Cruise,Cruise,Partners,,,
-,67,Car2go,Car2go,Partners,,,
-,68,DriveNow,DriveNow,Partners,,,
-,69,Didi Chuxing,Didi Chuxing,Partners,,,
-,70,,,,,,
-,71,,,,,,
-,72,,,,,,
-,73,,,,,,
-,74,,,,,,
-,75,,,,,,
-,76,,,,,,
-,77,,,,,,
-,78,,,,,,
-,79,,,,,,
-,80,,,,,,
-,81,,,,,,
-,82,,,,,,
-,83,,,,,,
-,84,,,,,,
-,85,,,,,,
-,86,,,,,,
-,87,,,,,,
-,88,,,,,,
-,89,,,,,,
-,90,,,,,,
-,91,,,,,,
-,92,,,,,,
-,93,,,,,,
-,94,,,,,,
-,95,,,,,,
-,96,,,,,,
-,97,,,,,,
-,98,,,,,,
-,99,,,,,,
-,100,,,,,,
+;RID;Active_company;Passive_company;Relation_type;Date_since;Relation_details;Information_source
+x;1;GM;Cruise;Ownership;03/11/2016;GM acquires Cruise to accelerate autonomous vehicle development;http://media.gm.com/media/us/en/gm/home.detail.html/content/Pages/news/us/en/2016/mar/0311-cruise.html
+x;2;Didi Chuxing;Uber;Investment;07/31/2016;Uber and Didi perform cross-investments to settle competition in China;http://www.bloomberg.com/news/articles/2016-08-01/uber-said-to-merge-china-business-with-didi-in-35-billion-deal
+x;3;GM;Lyft;Investment;01/05/2016;GM invests 500M USD in Lyft and sets out self-driving car partnership;http://www.reuters.com/article/us-gm-lyft-investment-idUSKBN0UI1A820160105
+x;4;BMW;DriveNow;Ownership;06/01/2011;DriveNow is a joint venture of BMW and Sixt;https://en.wikipedia.org/wiki/DriveNow
+x;5;Daimler_Mercedes;Car2go;Ownership;10/01/2008;Car2go is the car sharing service of Daimler;https://en.wikipedia.org/wiki/Car2Go
+x;7;BMW;Mobileye;Partners;07/01/2016;BMW, Intel and Mobileye form a partnership to work on self-driving cars;http://ir.mobileye.com/investor-relations/press-releases/press-release-details/2016/BMW-Group-Intel-and-Mobileye-Team-Up-to-Bring-Fully-Autonomous-Driving-to-Streets-by-2021/default.aspx
+x;8;BMW;Intel;Partners;07/01/2016;BMW, Intel and Mobileye form a partnership to work on self-driving cars;http://ir.mobileye.com/investor-relations/press-releases/press-release-details/2016/BMW-Group-Intel-and-Mobileye-Team-Up-to-Bring-Fully-Autonomous-Driving-to-Streets-by-2021/default.aspx
+x;9;BMW;Here;Ownership;12/04/2015;Consortium around BMW, Audi and Daimler buys map provider Here;https://techcrunch.com/2015/12/04/nokia-closes-its-2-8b-sale-of-here-to-the-audi-bmw-and-daimler-car-consortium/
+x;10;Audi;Here;Ownership;12/04/2015;Consortium around BMW, Audi and Daimler buys map provider Here;https://techcrunch.com/2015/12/04/nokia-closes-its-2-8b-sale-of-here-to-the-audi-bmw-and-daimler-car-consortium/
+x;11;Daimler_Mercedes;Here;Ownership;12/04/2015;Consortium around BMW, Audi and Daimler buys map provider Here;https://techcrunch.com/2015/12/04/nokia-closes-its-2-8b-sale-of-here-to-the-audi-bmw-and-daimler-car-consortium/
+x;12;Audi;Nvidia;Partners;06/06/2016;Nvidia and Audi form a collaboration on computing hardware and solutions;http://europe.autonews.com/article/20160607/ANE/160609921/carmakers-tap-nvidias-supercomputer-to-make-leap-toward-self-driving
+x;13;Baidu;Nvidia;Partners;08/31/2016;Baidu and Nvidia decide to work mutually on Cloud-to-Car map system;https://blogs.nvidia.com/blog/2016/08/31/baidu-nvidia-worlds-first-map-to-car-platform-self-driving-cars/
+x;14;VW;Audi;Ownership;01/01/1965;Audi is one of the many Volkswagen brands;http://www.volkswagenag.com/
+x;15;Baidu;Velodyne;Investment;08/16/2016;Baidu and Ford invest 75M USD each in Velodyne;http://www.forbes.com/sites/samabuelsamid/2016/08/16/ford-and-baidu-lead-new-150-million-investment-in-lidar-maker-velodyne/#5053c0b47492
+x;16;Ford;Velodyne;Investment;08/16/2016;Baidu and Ford invest 75M USD each in Velodyne;http://www.forbes.com/sites/samabuelsamid/2016/08/16/ford-and-baidu-lead-new-150-million-investment-in-lidar-maker-velodyne/#5053c0b47492
+x;17;Delphi;Mobileye;Partners;08/23/2016;Delphi and Mobileye are teaming up to build a self-driving system by 2019;http://www.theverge.com/2016/8/23/12603624/delphi-mobileye-self-driving-autonomous-car-2019
+x;18;Fiat_crysler;Google;Partners;05/03/2016;Google and Fiat Chrysler announce driverless cars collaboration;http://www.bbc.com/news/business-36199738
+x;19;Uber;Otto;Ownership;08/18/2016;Uber acquires Otto to lead its self-driving car effort;https://techcrunch.com/2016/08/18/uber-acquires-otto-to-lead-ubers-self-driving-car-effort-report-says/
+x;20;Uber;Volvo;Partners;08/18/2016;Volvo partners with Uber on self-driving cars;http://fortune.com/2016/08/18/volvo-uber-partner-on-self-driving-cars/
+x;21;Intel;Mobileye;Partners;07/01/2016;BMW, Intel and Mobileye form a partnership to work on self-driving cars;http://ir.mobileye.com/investor-relations/press-releases/press-release-details/2016/BMW-Group-Intel-and-Mobileye-Team-Up-to-Bring-Fully-Autonomous-Driving-to-Streets-by-2021/default.aspx
+x;22;Tesla;Nvidia;Partners;10/11/2016;Nvidia and Tesla form a hardware partnership for self-driving cars;http://seekingalpha.com/article/4011506-nvidia-tesla-partnership-huge-win
+x;23;Toyota;Uber;Partners;05/25/2016;Uber and Toyota announce major partnership;http://www.inquisitr.com/3129948/uber-and-toyota-just-announced-a-major-partnership/
+x;24;Apple;Didi Chuxing;Investment;05/13/2016;Apple invests 1B USD in Chinese ride sharing company Didi Chuxing;http://www.reuters.com/article/us-apple-china-idUSKCN0Y404W
+;25;;;;;;
+;26;;;;;;
+;27;;;;;;
+;28;;;;;;
+;29;;;;;;
+;30;;;;;;
+;31;;;;;;
+;32;;;;;;
+;33;;;;;;
+;34;;;;;;
+;35;;;;;;
+;36;;;;;;
+;37;;;;;;
+;38;;;;;;
+;39;;;;;;
+;40;;;;;;
+;41;;;;;;
+;42;;;;;;
+;43;;;;;;
+;44;;;;;;
+;45;;;;;;
+;46;;;;;;
+;47;;;;;;
+;48;;;;;;
+;49;;;;;;
+;50;Apple;Apple;Partners;;;
+;51;VW;VW;Partners;;;
+;52;Baidu;Baidu;Partners;;;
+;53;BMW;BMW;Partners;;;
+;54;Bosch;Bosch;Partners;;;
+;55;Daimler_Mercedes;Daimler_Mercedes;Partners;;;
+;56;GM;GM;Partners;;;
+;57;Google;Google;Partners;;;
+;58;Intel;Intel;Partners;;;
+;59;Mobileye;Mobileye;Partners;;;
+;60;Nvidia;Nvidia;Partners;;;
+;61;Here;Here;Partners;;;
+;62;Tesla;Tesla;Partners;;;
+;63;Uber;Uber;Partners;;;
+;64;Lyft;Lyft;Partners;;;
+;65;Zoox;Zoox;Partners;;;
+;66;Cruise;Cruise;Partners;;;
+;67;Car2go;Car2go;Partners;;;
+;68;DriveNow;DriveNow;Partners;;;
+;69;Didi Chuxing;Didi Chuxing;Partners;;;
+;70;;;;;;
+;71;;;;;;
+;72;;;;;;
+;73;;;;;;
+;74;;;;;;
+;75;;;;;;
+;76;;;;;;
+;77;;;;;;
+;78;;;;;;
+;79;;;;;;
+;80;;;;;;
+;81;;;;;;
+;82;;;;;;
+;83;;;;;;
+;84;;;;;;
+;85;;;;;;
+;86;;;;;;
+;87;;;;;;
+;88;;;;;;
+;89;;;;;;
+;90;;;;;;
+;91;;;;;;
+;92;;;;;;
+;93;;;;;;
+;94;;;;;;
+;95;;;;;;
+;96;;;;;;
+;97;;;;;;
+;98;;;;;;
+;99;;;;;;
+;100;;;;;;
