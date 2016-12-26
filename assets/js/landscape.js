@@ -135,7 +135,7 @@ svg1 = d3.select("#landscape").append("svg")
 
 
 var force = d3.layout.force()
-    .charge(-800) // worked well: 400
+    .charge(-700) // worked well: 400
     .linkDistance(150)
     .size([width, height])
     .nodes(graph.nodes)
