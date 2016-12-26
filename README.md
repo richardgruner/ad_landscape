@@ -2,6 +2,13 @@
 
 _ad_landcape_ is a javascript repo for the visualization of the _autonomous driving_ landscape using D3's Forced Directed Graph.
 
+
+
+![Screen shot of the graph][ad_landscape_graph]
+
+[ad_landscape_graph]: assets/images/ad_landscape_graph.png
+
+
 ### Purpose
 We created this visualization for a [blog post](http://www.intellify.us/2016/11/19/the-autonomous-driving-landscape/) within our blog about AI, robotics & entrepreneurship. We encode relations between entities (companies) as an undirected graph using different types of relations and hyperlinks on the relations for linking our information sources.
 
