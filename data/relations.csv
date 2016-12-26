@@ -14,16 +14,16 @@ x;13;Baidu;Nvidia;Partners;08/31/2016;Baidu and Nvidia decide to work mutually o
 x;14;VW;Audi;Ownership;01/01/1965;Audi is one of the many Volkswagen brands;http://www.volkswagenag.com/
 x;15;Baidu;Velodyne;Investment;08/16/2016;Baidu and Ford invest 75M USD each in Velodyne;http://www.forbes.com/sites/samabuelsamid/2016/08/16/ford-and-baidu-lead-new-150-million-investment-in-lidar-maker-velodyne/#5053c0b47492
 x;16;Ford;Velodyne;Investment;08/16/2016;Baidu and Ford invest 75M USD each in Velodyne;http://www.forbes.com/sites/samabuelsamid/2016/08/16/ford-and-baidu-lead-new-150-million-investment-in-lidar-maker-velodyne/#5053c0b47492
-x;17;Delphi;Mobileye;Partners;08/23/2016;Delphi and Mobileye are teaming up to build a self-driving system by 2019;http://www.theverge.com/2016/8/23/12603624/delphi-mobileye-self-driving-autonomous-car-2019
-x;18;Fiat_crysler;Google;Partners;05/03/2016;Google and Fiat Chrysler announce driverless cars collaboration;http://www.bbc.com/news/business-36199738
+x;17;Delphi;Mobileye;Partners;08/23/2016;Delphi, Intel and Mobileye are teaming up to build a self-driving system by 2019;http://www.reuters.com/article/us-autos-selfdriving-idUSKBN13O0AN
+x;18;Fiat_crysler;Waymo;Partners;05/03/2016;Google and Fiat Chrysler announce driverless cars collaboration;http://www.bbc.com/news/business-36199738
 x;19;Uber;Otto;Ownership;08/18/2016;Uber acquires Otto to lead its self-driving car effort;https://techcrunch.com/2016/08/18/uber-acquires-otto-to-lead-ubers-self-driving-car-effort-report-says/
 x;20;Uber;Volvo;Partners;08/18/2016;Volvo partners with Uber on self-driving cars;http://fortune.com/2016/08/18/volvo-uber-partner-on-self-driving-cars/
 x;21;Intel;Mobileye;Partners;07/01/2016;BMW, Intel and Mobileye form a partnership to work on self-driving cars;http://ir.mobileye.com/investor-relations/press-releases/press-release-details/2016/BMW-Group-Intel-and-Mobileye-Team-Up-to-Bring-Fully-Autonomous-Driving-to-Streets-by-2021/default.aspx
 x;22;Tesla;Nvidia;Partners;10/11/2016;Nvidia and Tesla form a hardware partnership for self-driving cars;http://seekingalpha.com/article/4011506-nvidia-tesla-partnership-huge-win
 x;23;Toyota;Uber;Partners;05/25/2016;Uber and Toyota announce major partnership;http://www.inquisitr.com/3129948/uber-and-toyota-just-announced-a-major-partnership/
 x;24;Apple;Didi Chuxing;Investment;05/13/2016;Apple invests 1B USD in Chinese ride sharing company Didi Chuxing;http://www.reuters.com/article/us-apple-china-idUSKCN0Y404W
-;25;;;;;;
-;26;;;;;;
+x;25;Delphi;Intel;Partners;08/23/2016;Delphi, Intel and Mobileye are teaming up to build a self-driving system by 2019;http://www.reuters.com/article/us-autos-selfdriving-idUSKBN13O0AN
+x;26;Google;Waymo;Ownership;12/13/2016;Waymo is Google's self-driving car spin off;https://medium.com/waymo/say-hello-to-waymo-whats-next-for-google-s-self-driving-car-project-b854578b24ee#.drbyoro0l
 ;27;;;;;;
 ;28;;;;;;
 ;29;;;;;;
