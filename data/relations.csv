@@ -24,8 +24,8 @@ x;23;Toyota;Uber;Partners;05/25/2016;Uber and Toyota announce major partnership;
 x;24;Apple;Didi Chuxing;Investment;05/13/2016;Apple invests 1B USD in Chinese ride sharing company Didi Chuxing;http://www.reuters.com/article/us-apple-china-idUSKCN0Y404W
 x;25;Delphi;Intel;Partners;08/23/2016;Delphi, Intel and Mobileye are teaming up to build a self-driving system by 2019;http://www.reuters.com/article/us-autos-selfdriving-idUSKBN13O0AN
 x;26;Google;Waymo;Ownership;12/13/2016;Waymo is Google's self-driving car spin off;https://medium.com/waymo/say-hello-to-waymo-whats-next-for-google-s-self-driving-car-project-b854578b24ee#.drbyoro0l
-;27;;;;;;
-;28;;;;;;
+x;27;Daimler_Mercedes;Nvidia;Partners;01/06/2017;Mercedes-Benz and NVIDIA Announce Partnership for AI Car Technology;https://blogs.nvidia.com/blog/2017/01/06/mercedes-benz-nvidia-ai/
+x;28;Intel;Here;Investment;01/03/2017;Intel acquires 15 percent ownership of Here;https://newsroom.intel.com/news-releases/intel-acquire-15-percent-ownership-of-here/
 ;29;;;;;;
 ;30;;;;;;
 ;31;;;;;;
@@ -47,26 +47,26 @@ x;26;Google;Waymo;Ownership;12/13/2016;Waymo is Google's self-driving car spin o
 ;47;;;;;;
 ;48;;;;;;
 ;49;;;;;;
-;50;Apple;Apple;Partners;;;
-;51;VW;VW;Partners;;;
-;52;Baidu;Baidu;Partners;;;
-;53;BMW;BMW;Partners;;;
-;54;Bosch;Bosch;Partners;;;
-;55;Daimler_Mercedes;Daimler_Mercedes;Partners;;;
-;56;GM;GM;Partners;;;
-;57;Google;Google;Partners;;;
-;58;Intel;Intel;Partners;;;
-;59;Mobileye;Mobileye;Partners;;;
-;60;Nvidia;Nvidia;Partners;;;
-;61;Here;Here;Partners;;;
-;62;Tesla;Tesla;Partners;;;
-;63;Uber;Uber;Partners;;;
-;64;Lyft;Lyft;Partners;;;
-;65;Zoox;Zoox;Partners;;;
-;66;Cruise;Cruise;Partners;;;
-;67;Car2go;Car2go;Partners;;;
-;68;DriveNow;DriveNow;Partners;;;
-;69;Didi Chuxing;Didi Chuxing;Partners;;;
+;50;;;;;;
+;51;;;;;;
+;52;;;;;;
+;53;;;;;;
+;54;;;;;;
+;55;;;;;;
+;56;;;;;;
+;57;;;;;;
+;58;;;;;;
+;59;;;;;;
+;60;;;;;;
+;61;;;;;;
+;62;;;;;;
+;63;;;;;;
+;64;;;;;;
+;65;;;;;;
+;66;;;;;;
+;67;;;;;;
+;68;;;;;;
+;69;;;;;;
 ;70;;;;;;
 ;71;;;;;;
 ;72;;;;;;

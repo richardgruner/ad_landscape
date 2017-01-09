@@ -135,8 +135,8 @@ svg1 = d3.select("#landscape").append("svg")
 
 
 var force = d3.layout.force()
-    .charge(-700) // worked well: 400
-    .linkDistance(150)
+    .charge(-600) // worked well: 400
+    .linkDistance(130)
     .size([width, height])
     .nodes(graph.nodes)
     .links(graph.links)
@@ -414,7 +414,7 @@ link.on("mouseout2", function() {
 //     .style("fill", function(d) { return color(d.group); })
 //   .call(force.drag);
 
-var image_size = 32
+var image_size = 30
 
 //Toggle stores whether the highlighting is on
 var toggle = 0;
